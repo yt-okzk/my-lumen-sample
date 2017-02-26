@@ -20,7 +20,9 @@ class ApiController extends Controller
     public function index(Request $request)
     {
       $obj = [
-        'hello' => 'world'
+        'hello'  => 'world',
+        'config' => config('app.hoge'),
+        'db'     => config('database.driver'),
       ];
 
       return response()->json($obj)->setCallback($request->input('callback'));

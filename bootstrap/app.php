@@ -2,12 +2,6 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-try {
-    (new Dotenv\Dotenv(__DIR__.'/../'))->load();
-} catch (Dotenv\Exception\InvalidPathException $e) {
-    //
-}
-
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -97,5 +91,8 @@ $app->singleton(
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__.'/../routes/web.php';
 });
+
+$app->configure('app');
+$app->configure('database');
 
 return $app;
